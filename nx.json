@@ -26,13 +26,5 @@
       }
     ]
   },
-  "projects": {
-    "calculator": {
-      "tags": []
-    },
-    "calculator-e2e": {
-      "tags": [],
-      "implicitDependencies": ["calculator"]
-    }
-  }
+  "projects": {}
 }
