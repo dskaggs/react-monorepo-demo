@@ -1,6 +1,182 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "calculator": {
+      "root": "apps/calculator",
+      "sourceRoot": "apps/calculator/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/calculator",
+            "index": "apps/calculator/src/index.html",
+            "main": "apps/calculator/src/main.js",
+            "polyfills": "apps/calculator/src/polyfills.js",
+            "tsConfig": "apps/calculator/tsconfig.app.json",
+            "assets": [
+              "apps/calculator/src/favicon.ico",
+              "apps/calculator/src/assets"
+            ],
+            "styles": ["apps/calculator/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/calculator/src/environments/environment.js",
+                  "with": "apps/calculator/src/environments/environment.prod.js"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "calculator:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "calculator:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/calculator/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/calculator"],
+          "options": {
+            "jestConfig": "apps/calculator/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calculator-e2e": {
+      "root": "apps/calculator-e2e",
+      "sourceRoot": "apps/calculator-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/calculator-e2e/cypress.json",
+            "devServerTarget": "calculator:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "calculator:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/calculator-e2e/**/*.js"]
+          }
+        }
+      }
+    },
+    "web-react-calculator-ui-button-panel": {
+      "root": "libs/web/react/calculator/ui/button-panel",
+      "sourceRoot": "libs/web/react/calculator/ui/button-panel/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/react/calculator/ui/button-panel/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/react/calculator/ui/button-panel"],
+          "options": {
+            "jestConfig": "libs/web/react/calculator/ui/button-panel/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-react-calculator-ui-display": {
+      "root": "libs/web/react/calculator/ui/display",
+      "sourceRoot": "libs/web/react/calculator/ui/display/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/react/calculator/ui/display/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/react/calculator/ui/display"],
+          "options": {
+            "jestConfig": "libs/web/react/calculator/ui/display/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-react-calculator-util-logic": {
+      "root": "libs/web/react/calculator/util/logic",
+      "sourceRoot": "libs/web/react/calculator/util/logic/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/react/calculator/util/logic/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/react/calculator/util/logic"],
+          "options": {
+            "jestConfig": "libs/web/react/calculator/util/logic/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/react"
   },
@@ -19,5 +195,6 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "defaultProject": "calculator"
 }

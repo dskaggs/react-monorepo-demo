@@ -26,5 +26,22 @@
       }
     ]
   },
-  "projects": {}
+  "projects": {
+    "calculator": {
+      "tags": []
+    },
+    "calculator-e2e": {
+      "tags": [],
+      "implicitDependencies": ["calculator"]
+    },
+    "web-react-calculator-ui-button-panel": {
+      "tags": []
+    },
+    "web-react-calculator-ui-display": {
+      "tags": []
+    },
+    "web-react-calculator-util-logic": {
+      "tags": []
+    }
+  }
 }

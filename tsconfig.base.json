@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@react-demo/web-react-calculator-ui-button-panel": [
+        "libs/web/react/calculator/ui/button-panel/src/index.js"
+      ],
+      "@react-demo/web-react-calculator-ui-display": [
+        "libs/web/react/calculator/ui/display/src/index.js"
+      ],
+      "@react-demo/web-react-calculator-util-logic": [
+        "libs/web/react/calculator/util/logic/src/index.js"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
